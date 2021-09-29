@@ -1,0 +1,971 @@
+\documentclass[a4paper,10pt]{article} % Uses article class in A4 format
+
+%----------------------------------------------------------------------------------------
+%	FORMATTING
+%----------------------------------------------------------------------------------------
+
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\setlength{\voffset}{-15pt}
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\usepackage[a4paper, margin=2.5cm]{geometry} % Sets margin to 2.5cm for A4 Paper
+\usepackage[onehalfspacing]{setspace} % Sets Spacing to 1.5
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\usepackage{titlesec} % Allows customization of titles
+\renewcommand\thesection{\arabic{section}.} % Arabic numerals for the sections
+\titleformat{\section}{\large}{\thesection}{1em}{}
+\renewcommand\thesubsection{\alph{subsection})} % Alphabetic numerals for subsections
+\titleformat{\subsection}{\large}{\thesubsection}{1em}{}
+\renewcommand\thesubsubsection{\roman{subsubsection}.} % Roman numbering for subsubsections
+\titleformat{\subsubsection}{\large}{\thesubsubsection}{1em}{}
+
+\usepackage[all]{nowidow} % Removes widows
+
+\usepackage[backend=biber,style=numeric,
+sorting=nyt, natbib=true]{biblatex} % Complete reimplementation of bibliographic facilities
+\addbibresource{main.bib}
+\usepackage{csquotes} % Context sensitive quotation facilities
+
+\usepackage[yyyymmdd]{datetime} % Uses YEAR-MONTH-DAY format for dates
+\renewcommand{\dateseparator}{-} % Sets dateseparator to '-'
+
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{}\renewcommand{\headrulewidth}{0pt} % Blank out the default header
+\fancyfoot[L]{\textsc{Emon Hossain, SH-019-120}} % Custom footer text
+\fancyfoot[C]{} % Custom footer text
+\fancyfoot[R]{\thepage} % Custom footer text
+
+\newcommand{\note}[1]{\marginpar{\scriptsize \textcolor{red}{#1}}} % Enables comments in red on margin
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+	
+	%----------------------------------------------------------------------------------------
+	%	TITLE SECTION
+	%----------------------------------------------------------------------------------------
+	
+	\title{template_assignment} % Article title
+	\fancyhead[C]{}
+	\begin{minipage}{0.295\textwidth} % Left side of title section
+		\raggedright
+		MTH-303\\ % Your lecture or course
+		\footnotesize % Authors text size
+		%\hfill\\ % Uncomment if right minipage has more lines
+		Emon Hossain, Roll:SH-019-120 Reg:2017-613-811, Session:2019-20 (3rd year) % Your name, your matriculation number
+		\medskip\hrule
+	\end{minipage}
+	\begin{minipage}{0.4\textwidth} % Center of title section
+		\centering 
+		\large % Title text size
+		Assignment 01\\ % Assignment title and number
+		\normalsize % Subtitle text size
+		ODE\\ % Assignment subtitle
+	\end{minipage}
+	\begin{minipage}{0.295\textwidth} % Right side of title section
+		\raggedleft
+		\today\\ % Date
+		\footnotesize % Email text size
+		%\hfill\\ % Uncomment if left minipage has more lines
+		mdemon7475@gmail.com% Your email
+		\medskip\hrule
+	\end{minipage}
+	
+	%----------------------------------------------------------------------------------------
+	%	ARTICLE CONTENTS
+	%----------------------------------------------------------------------------------------
+	
+	% here be dragons
+	
+\vspace{10px}	
+
+	$1.$  \textcolor{blue}{Rewrite (don't solve it) the following initial value problem for a nonhomogeneous 4th
+	order differential equation as an initial value problem for a nonhomogeneous system
+	of 4 first order differential equations.}
+	
+	$$y^{(4)}-4y'''+2y''+5y'-y=t,\quad y(0)=1,y'(0)=-1,y''(0)=3,y'''(0)=2$$
+		
+	\textbf{Answer:} We will define some new functions,
+	
+
+\begin{align*} 
+	x_1=y &\implies x_1'=y'=x_2 \\ 
+	x_2=y' &\implies x_2'=y''=x_3 \\ 
+	x_3=y'' &\implies x_3'=y'''=x_4 \\ 
+	x_4=y''' &\implies x_4'=y^{(4)}=x_1-5x_2-2x_3+4x_4+t 
+\end{align*}
+
+The system along with the initial conditions is then,
+
+\begin{align*} 
+	x_1'&=x_2 ,&x_1(0)=1\\ 
+	x_2'&=x_3 ,&x_2(0)=-1\\ 
+	x_3'&=x_4 ,&x_3(0)=3\\ 
+	x_4'&=x_1-5x_2-2x_3+4x_4+t ,&x_4(0)=2 
+\end{align*}
+
+$2.$ \textcolor{blue}{Let A be a 3 x 3 matrix and have the following Eigen pairs. Give the general solution of
+the system:}
+
+$$\left(-2,\begin{bmatrix}2\\-1\\3\end{bmatrix}\right),\qquad \left( 1+i\sqrt2, \begin{bmatrix}1\\4\\-2\end{bmatrix}+i\begin{bmatrix}-2\\3\\1\end{bmatrix}  \right)$$
+
+\textbf{Answer:} The eigenvalues and eigenvectors are,
+
+$$\lambda_1=-2,\quad\lambda_2=1+i\sqrt{2},\quad \vec v_1=\begin{pmatrix}2\\-1\\3\end{pmatrix},\quad \vec v_2=\begin{pmatrix}1\\4\\-2\end{pmatrix}+i\begin{pmatrix}-2\\3\\1\end{pmatrix} $$ 
+
+The real solution $x=e^{\lambda_1 t}\vec v_1$ to the system can be written, 
+
+$$x_1=e^{-2 t}\begin{pmatrix}2\\-1\\3\end{pmatrix}$$
+
+The corresponding complex solution $x=e^{\lambda_2 t}\vec v_2$ to the system can be written,
+ 
+$$x=e^t (\cos \sqrt{2}t+i\sin \sqrt{2}t) \left( 
+\begin{pmatrix}1\\4\\-2\end{pmatrix}+i\begin{pmatrix}-2\\3\\1\end{pmatrix} \right)$$
+
+The real and imaginary parts of $x$ are,
+
+$$x_2=e^t\begin{pmatrix}
+		\cos \sqrt2 t+2\sin \sqrt2 t\\
+		4\cos \sqrt2 t-3\sin \sqrt2 t\\
+		-2\cos \sqrt2 t-\sin \sqrt2 t\end{pmatrix}
+$$
+
+$$
+	x_3 =e^t
+	\begin{pmatrix}
+		-2\cos \sqrt2 t+\sin \sqrt2 t\\
+		3\cos \sqrt2 t+4\sin \sqrt2 t\\
+		\cos \sqrt2 t-2\sin \sqrt2 t
+	\end{pmatrix}
+$$
+
+These are two distinct real solutions to the system.
+
+the general solution of the system is,
+
+$$ 
+x=c_1e^{-2 t}\begin{pmatrix}2\\-1\\3\end{pmatrix}+c_2 e^t\begin{pmatrix}
+	\cos \sqrt2 t+2\sin \sqrt2 t\\
+	4\cos \sqrt2 t-3\sin \sqrt2 t\\
+	-2\cos \sqrt2 t-\sin \sqrt2 t
+\end{pmatrix}+c_3 e^t\begin{pmatrix}
+-2\cos \sqrt2 t+\sin \sqrt2 t\\
+3\cos \sqrt2 t+4\sin \sqrt2 t\\
+\cos \sqrt2 t-2\sin \sqrt2 t\end{pmatrix}
+$$
+
+
+$3.$ \textcolor{blue}{Solve the system} $Y'=AY$ \textcolor{blue}{where} $A$ \textcolor{blue}{is given below:}
+
+$$(a)\: A=\begin{pmatrix}
+5 & 1\\
+1 & 5
+\end{pmatrix} \qquad
+(b)\: A=\begin{pmatrix}
+2 & -1\\
+4 & 2
+\end{pmatrix}
+$$
+
+\textbf{Answer:} 
+
+$(a)$ Given that,
+
+$$Y'=\begin{pmatrix}
+	5 & 1\\
+	1 & 5
+\end{pmatrix}Y$$
+
+The characteristic polynomial is,
+
+$$\det(A-\lambda I)=(5-\lambda)^2-1=\lambda^2-10\lambda+24=0$$
+
+So, the eigenvalues are $\lambda=6$ and $4$.
+
+Eigenvector for corresponding eigenvalue $\lambda=6$,
+
+$$\begin{pmatrix}
+-1 & 1\\1 & -1
+\end{pmatrix}\begin{pmatrix}
+a\\b
+\end{pmatrix}=0$$ 
+ 
+\begin{align*}
+&\implies \begin{cases} 
+-a+b &=0 \\
+a-b &=0
+\end{cases} \\
+&\implies a+b =0
+\end{align*}
+
+$$v=\begin{pmatrix}
+	a\\b
+\end{pmatrix}=\begin{pmatrix}
+a\\b
+\end{pmatrix}=a\begin{pmatrix}
+1\\1
+\end{pmatrix}$$
+
+
+Eigenvector for corresponding eigenvalue $\lambda=4$,
+
+$$\begin{pmatrix}
+	1 & 1\\1 & 1
+\end{pmatrix}\begin{pmatrix}
+	a\\b
+\end{pmatrix}=0$$ 
+
+\begin{align*}
+	&\implies \begin{cases} 
+		a+b &=0 \\
+		a+b &=0
+	\end{cases} \\
+	&\implies a+b =0
+\end{align*}
+
+$$v=\begin{pmatrix}
+	a\\b
+\end{pmatrix}=\begin{pmatrix}
+	a\\-a
+\end{pmatrix}=a\begin{pmatrix}
+	1\\-1
+\end{pmatrix}$$
+
+
+Eigenvectors are, $$v_1=\begin{pmatrix}
+	1\\1
+\end{pmatrix},\qquad v_2=\begin{pmatrix}
+1\\-1
+\end{pmatrix}$$
+
+The solution of the system is, $$Y_h(t)=c_1e^{6 t}\begin{pmatrix}
+	1\\1
+\end{pmatrix}+c_2e^{4 t}\begin{pmatrix}
+1\\-1
+\end{pmatrix}$$
+
+
+
+$(b)$ Given that,
+
+$$Y'=\begin{pmatrix}
+	2 & -1\\
+	4 & 2
+\end{pmatrix}Y$$
+
+The characteristic polynomial is,
+
+$$\det(A-\lambda I)=\lambda^2-4\lambda+8=0$$
+
+So, the eigenvalues are $\lambda=2+2i$ and $2-2i$.
+
+Eigenvector for corresponding eigenvalue $\lambda=2+2i$,
+
+$$\begin{pmatrix}
+	-2i & -1\\4 & -2i
+\end{pmatrix}\begin{pmatrix}
+	a\\b
+\end{pmatrix}=0$$ 
+
+Reducing the matrix we get,
+
+$$\begin{pmatrix}
+	-2i & -1\\0 & 0
+\end{pmatrix} R_2\leftarrow R_2-(2i)R_1$$ 
+
+This reduce the equation, $b=-2 i a$
+
+The eigenvector is, $\begin{pmatrix}
+a\\b
+\end{pmatrix}=a \begin{pmatrix}
+1\\-2 i 
+\end{pmatrix} \implies v_1=  \begin{pmatrix}
+1\\-2 i 
+\end{pmatrix} $
+
+The solution of the system is, 
+
+$$Y=e^{2 t}(\cos 2t+i\sin 2t)\left( \begin{pmatrix}
+1\\0
+\end{pmatrix} +i \begin{pmatrix}
+0\\-2
+\end{pmatrix}  \right)$$
+
+
+The real and imaginary parts of $Y$ are,
+
+
+$$x_1=e^{2 t}\begin{pmatrix}
+\cos 2t\\
+2\sin 2t
+\end{pmatrix}$$
+
+$$x_2=e^{2 t}\begin{pmatrix}
+\sin 2t\\
+-2\cos 2t
+\end{pmatrix}$$
+
+These are two distinct real solutions to the system.
+
+the general solution of the system is,
+
+$$Y_h(t)=c_1e^{2 t}\begin{pmatrix}
+	\cos 2t\\
+	2\sin 2t
+\end{pmatrix}+c_2e^{2 t}\begin{pmatrix}
+\sin 2t\\
+-2\cos 2t
+\end{pmatrix}$$
+
+
+$4.$ \textcolor{blue}{Using the Method of Undetermined Coefficients, solve} $$Y'=\begin{pmatrix}
+1 & 4\\1 &1
+\end{pmatrix}Y+\begin{pmatrix}
+2e^{t}-1\\e^{t}+2
+\end{pmatrix}\qquad (1)$$ if we know $$Y_h=c_1e^{3t}\begin{pmatrix}
+2\\1
+\end{pmatrix}+c_2e^{-t}\begin{pmatrix}
+-2\\1
+\end{pmatrix}$$
+
+
+\textbf{Answer:}  So, the eigenvalues $\lambda=3$ and $-1$, and eigenvectors $v_1=\begin{pmatrix}
+2\\1
+\end{pmatrix}$ and $v-2=\begin{pmatrix}
+-2\\1
+\end{pmatrix}$  respectively.
+
+Before find a particular solution to $(1)$ let’s rewrite it as,
+
+$$Y'=\begin{pmatrix}
+1&4\\
+1&1
+\end{pmatrix}Y+e^t\begin{pmatrix}
+2\\1
+\end{pmatrix}+\begin{pmatrix}
+-1\\2
+\end{pmatrix}$$
+
+We can be split this into two nonhomogeneous equation,
+
+$$
+\begin{cases} 
+	Y'=\begin{pmatrix}
+		1 & 4\\1 &1
+		\end{pmatrix}Y+e^t\begin{pmatrix}
+		2\\1
+	\end{pmatrix} & (A) \\
+	Y'=\begin{pmatrix}
+	1 & 4\\1 &1
+\end{pmatrix}Y+\begin{pmatrix}
+-1\\2
+\end{pmatrix} & (B)
+\end{cases}
+$$
+
+Let $Y_p^{(A)}$ be a particular solution to $(A)$ and $Y_p^{(B)}$ be a particular solution to $(B)$. So the general solution to $(1)$ can be written in the form, $$Y=Y_h+Y_p^{(A)}+Y_p^{(B)}$$
+
+For $Y_p^{(A)}$, let guess the particular solution is $Y_p^{(A)}=\begin{pmatrix}
+a_1\\a_2
+\end{pmatrix}e^t$
+
+Then substitute this solution in $(1)$,
+
+$$
+\begin{pmatrix}
+a_1\\a_2
+\end{pmatrix}e^t=\begin{pmatrix}
+a_1+4a_2\\
+a_1+a_2
+\end{pmatrix}e^t+\begin{pmatrix}
+2\\1
+\end{pmatrix}e^t
+$$
+
+ compare the coefficients of $e^t$ we get,
+ 
+$$
+\begin{cases} 
+	a_1&=a_1+4a_2+2\\
+	a_2&=a_1+a_2+1
+\end{cases}
+$$ 
+
+Solving the system of equation we get, $a_1=-1$ and $a_2=-\frac12$
+
+
+For $Y_p^{(B)}$, let guess the particular solution is $Y_p^{(B)}=\begin{pmatrix}
+	b_1\\b_2
+\end{pmatrix}$
+
+Then substitute this solution in $(1)$,
+
+$$
+\begin{pmatrix}
+	0\\0
+\end{pmatrix}=\begin{pmatrix}
+	b_1+4b_2\\
+	b_1+b_2
+\end{pmatrix}+\begin{pmatrix}
+	-1\\2
+\end{pmatrix}
+$$
+
+compare the coefficients of $t^0$ we get,
+
+$$
+\begin{cases} 
+	0&=b_1+4b_2+2\\
+	0&=b_1+b_2+1
+\end{cases}
+$$ 
+
+$$
+\begin{cases} 
+	b_1+4b_2+2&=0\\
+	-3b_2+3&=0
+\end{cases}
+$$
+
+Solving the system of equation we get, $b_1=-3$ and $b_2=1$.
+
+Hence, the general solution of $(1)$ is,
+
+$$Y=c_1e^{3t}\begin{pmatrix}
+	2\\1
+\end{pmatrix}+c_2e^{-t}\begin{pmatrix}
+	-2\\1
+\end{pmatrix}+\begin{pmatrix}
+-1\\-\frac12
+\end{pmatrix}e^t+\begin{pmatrix}
+-3\\1
+\end{pmatrix}$$
+
+$5.$ \textcolor{blue}{Using the Method of Variation of Parameters, solve} 
+
+$$Y'=\begin{pmatrix}
+2&4\\
+1&2
+\end{pmatrix}Y+\begin{pmatrix}
+e^{4 t}-e^{2 t}\\
+t+2
+\end{pmatrix}$$
+If we know, 
+
+$$Y_h=c_1\begin{pmatrix}
+-2\\1
+\end{pmatrix}+c_2 e^{4 t}\begin{pmatrix}
+2\\1
+\end{pmatrix}$$
+
+
+\textbf{Answer:} The complementary solution to this system is,
+
+$$
+Y_h=c_1\begin{pmatrix}
+	-2\\1
+\end{pmatrix}+c_2 e^{4 t}\begin{pmatrix}
+	2\\1
+\end{pmatrix}
+$$
+
+Now the matrix $Y$ is, 
+
+$$Y=
+\begin{pmatrix}
+	-2&2e^{4 t}\\
+	1&e^{4 t}
+\end{pmatrix}
+$$
+
+Now, we need to find the inverse of this matrix. 
+
+$$\det
+\begin{pmatrix}
+-2&2e^{4 t}\\
+1&e^{4t}
+\end{pmatrix}=-4e^{4 t}
+$$
+
+$$
+Y^{-1}=\frac{1}{-4 e^{4 t}}
+\begin{pmatrix}
+e^{4 t}&-2e^{4 t}\\
+-1&-2
+\end{pmatrix}=\frac{1}{4}
+\begin{pmatrix}
+-1&2\\
+e^{-4t}&2e^{-4t}
+\end{pmatrix}
+$$
+
+Now doing the multiplication in the integral,
+
+$$
+Y^{-1}\vec g(t)= \frac{1}{4}
+\begin{pmatrix}
+	-1&2\\
+	e^{-4t}&2e^{-4t}
+\end{pmatrix}
+\begin{pmatrix}
+	e^{4 t}-e^{2 t}\\
+	t+2
+\end{pmatrix}=\frac{1}{4}
+\begin{pmatrix}
+e^{2t}-e^{4t}+2t+4\\
+1-e^{-2t}+2te^{-4t}+4e^{-4t}
+\end{pmatrix}
+$$
+
+Now the integral of,
+
+$$
+\begin{aligned}
+\int Y^{-1}\vec g(t)\:dt&=\int \frac{1}{4}
+\begin{pmatrix}
+	e^{2t}-e^{4t}+2t+4\\
+	1-e^{-2t}+2te^{-4t}+4e^{-4t}
+\end{pmatrix} \:dt \\
+&=\frac14 
+\begin{pmatrix}
+	\frac{e^{2t}}{2}-\frac{e^{4t}}{4}+t^2+4t\\
+	t+\frac{e^{-2t}}{2}-\frac{te^{-4t}}{2}-\frac{9e^{-4t}}{8}
+\end{pmatrix} \\
+&= \begin{pmatrix}
+	\frac{e^{2t}}{8}-\frac{e^{4t}}{16}+\frac{t^2}{2}+t\\
+	\frac{t}{4}+\frac{e^{-2t}}{8}-\frac{te^{-4t}}{8}-\frac{9e^{-4t}}{32}
+\end{pmatrix}
+\end{aligned}
+$$
+
+Then the particular solution $Y_p$ is,
+
+$$
+\begin{aligned}
+Y_p&=Y\int Y^{-1}\vec g(t)\:dt\\
+&=\begin{pmatrix}
+-2&2e^{4 t}\\
+1&e^{4t}
+\end{pmatrix}
+\begin{pmatrix}
+	\frac{e^{2t}}{8}-\frac{e^{4t}}{16}+\frac{t^2}{2}+t\\
+	\frac{t}{4}+\frac{e^{-2t}}{8}-\frac{te^{-4t}}{8}-\frac{9e^{-4t}}{32}
+\end{pmatrix}\\
+&=
+\begin{pmatrix}
+\frac{te^{4t}}{2}+\frac{e^{4t}}{8}-\frac{t^2}{2}-\frac{9t}{4}-\frac{9}{16}\\
+\frac{te^{4t}}{4}-\frac{e^{4t}}{16}+\frac{e^{2t}}{4}+\frac{t^2}{4}+\frac{7t}{8}-\frac{9}{32}
+\end{pmatrix}
+\end{aligned}
+$$
+
+The general solution of the system of differential equation is,
+
+$$
+Y=c_1\begin{pmatrix}
+	-2\\1
+\end{pmatrix}+c_2 e^{4 t}\begin{pmatrix}
+	2\\1
+\end{pmatrix}+\begin{pmatrix}
+\frac{te^{4t}}{2}+\frac{e^{4t}}{8}-\frac{t^2}{2}-\frac{9t}{4}-\frac{9}{16}\\
+\frac{te^{4t}}{4}-\frac{e^{4t}}{16}+\frac{e^{2t}}{4}+\frac{t^2}{4}+\frac{7t}{8}-\frac{9}{32}
+\end{pmatrix}
+$$
+
+
+
+$6.$ \textcolor{blue}{Use the power series method to solve the differential equation} $y''+4y=0$. \textcolor{blue}{Give the
+first} $6$ \textcolor{blue}{nonzero terms of the power series solution. Also give also the general term of
+the power series solution.}
+
+
+\textbf{Answer:} Let $y=\sum_{n=0}^\infty a_n x^n$ then, $$y'=\sum_{n=0}^\infty na_n x^{n-1}=\sum_{n=1}^\infty na_n x^{n-1}$$ and $$y''=\sum_{n=0}^\infty n(n-1) a_n x^{n-2}=\sum_{n=2}^\infty n(n-1) a_n x^{n-2}$$
+
+Then $y''+4y=0$ become, 
+
+\begin{align*}
+\sum_{n=2}^\infty n(n-1) a_n x^{n-2}+4\sum_{n=0}^\infty a_n x^{n}&=0\\
+\sum_{n=0}^\infty (n+2)(n+1) a_{(n+2)} x^{n}+4\sum_{n=0}^\infty a_n x^{n}&=0\\
+\sum_{n=0}^\infty \left( (n+2)(n+1) a_{(n+2)}+4a_n \right) x^n &=0
+\end{align*}
+
+If $\sum_{n=0}^\infty \left( (n+2)(n+1) a_{(n+2)}+4a_n \right) x^n$ is $0$ for all $x$ then $(n+2)(n+1) a_{(n+2)}+4a_n=0, n=0,1,2,\cdots$
+
+
+Then we can rewrite it as, $$a_{(n+2)}=-\frac{4a_n}{(n+1)(n+2)}$$
+
+for $n=0$, $$a_2=\frac{-4a_0}{1.2}$$
+
+for $n=1$, $$a_3=\frac{-4a_1}{2.3}$$
+
+for $n=2$, $$a_4=\frac{-4a_2}{3.4}=\frac{4.4a_0}{1.2.3.4}$$
+
+for $n=3$, $$a_5=\frac{-4a_3}{4.5}=\frac{4.4a_1}{2.3.4.5}$$ 
+
+Notice that at each step we always plugged back in the previous answer so that when the subscript was even we could always write the $a_n$ in terms of $a_0$ and when the coefficient was odd we could always write the $a_n$ in terms of $a_1$. 
+
+Hence, $$a_{2k}=\frac{(-4)^ka_0}{(2k)!}\qquad a_{2k+1}=\frac{(-4)^ka_1}{(2k+1)!},\quad k=1,2\cdots$$ 
+
+Solution of the differential equation is, 
+
+$$
+\begin{aligned}
+y(x) &= \sum_{n=0}^\infty a_n x^n\\
+&= a_0+a_1x+a_2x^2+a_3x^3+a_4x^4+a_5x^5+\cdots \\
+&= a_0+a_1x-\frac{4a_0}{1.2}x^2-\frac{4a_1}{2.3}x^3+\frac{16a_0}{1.2.3.4}x^4+\frac{16a_1}{2.3.4.5}x^5+\cdots \\
+&= a_0\left( 1-\frac{4}{1.2}x^2+\cdots+\frac{(-4)^k}{(2k)!}x^{2k}+\cdots\right)+a_1 \left(
+x-\frac{4}{2.3}x^3+\cdots+\frac{(-4)^k}{(2k+1)!}x^{2k+1}+\cdots
+\right)\\
+&= a_0\sum_{n=0}^\infty \frac{(-1)^k(2)^{2k}}{(2k)!}x^{2k} + a_1 \sum_{n=0}^\infty \frac{(-1)^k(2)^{2k+1}}{(2k+1)!}x^{2k+1}\\
+&=(c_1\cos(2x)+c_2\sin(2x))
+\end{aligned}
+$$
+
+$6$ nonzero terms are, 
+
+$$a_2=-2a_0,a_3=-\frac{4a_1}{3!},a_4=\frac{16a_0}{4!},a_5=\frac{16a_1}{5!},a_6=-\frac{4^3a_0}{6!},a_7=-\frac{2^6a_0}{7!}$$
+
+
+$7.$ \textcolor{blue}{Consider the differential equation,}
+
+$$
+(x^2-1)x^2y''-(x^2+1)y'+(x^2+1)y=0
+$$
+
+$(a)$ \textcolor{blue}{Find all singular points of the equation.}
+
+
+\textbf{Answer:}
+
+Comparing the given equation with $y''+P(x)y'+Q(x)y=0$ we have, 
+
+$$P(x)=-\frac{x^2+1}{x^2(x^2-1)}\qquad Q(x)=\frac{x^2+1}{x^2(x^2-1)}$$
+
+The denominator are vanish at $x=0,\pm 1$. Which mean the singular points are $0,-1$ and $1$, because at these points the functions are not analytic.
+
+$(b)$ \textcolor{blue}{For each of the singular points obtained in (a), determine if it is a regular singular
+	point. Explain your reasoning.}
+
+\textbf{Answer:}
+
+$$P(x)=-\frac{x^2+1}{x^2(x^2-1)}\qquad Q(x)=\frac{x^2+1}{x^2(x^2-1)}$$
+
+and  singular points are $0,\pm 1$.
+
+$$
+\begin{aligned}
+	\lim_{x\rightarrow 0}(x-0)P(x)&=\lim_{x\rightarrow 0}-\frac{x^2+1}{(x^2-1)x}\text{ is not analytic at }x=0\\
+	\lim_{x\rightarrow 0}(x-0)^2Q(x)&=\lim _{x\to \:0}\left(x^2\frac{x^2+1}{\left(x^2-1\right)x^2}\right)=\lim _{x\to \:0}\left(\frac{x^2+1}{x^2-1}\right)=-1
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+	\lim_{x\rightarrow -1}(x+1)P(x)&=\lim_{x\rightarrow -1}-(x+1)\frac{x^2+1}{(x^2-1)x^2}=\lim _{x\to \:-1}\left(-\frac{x^2+1}{x^2\left(x-1\right)}\right)=1\\
+	\lim_{x\rightarrow -1}(x+1)^2Q(x)&=\lim _{x\to \:1}\left(\frac{\left(x^2+1\right)\left(x-1\right)}{x^2\left(x+1\right)}\right)=\lim _{x\to \:-1}\left(\frac{\left(x^2+1\right)\left(x+1\right)}{x^2\left(x-1\right)}\right)=0
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+	\lim_{x\rightarrow 1}(x-1)P(x)&=\lim _{x\to \:1}\left(-\left(x-1\right)\frac{x^2+1}{\left(x^2-1\right)x^2}\right)=\lim _{x\to \:1}\left(-\left(x-1\right)\frac{x^2+1}{\left(x^2-1\right)x^2}\right)=-1\\
+	\lim_{x\rightarrow 1}(x-1)^2Q(x)&=\lim _{x\to \:1}\left(-\left(x-1\right)^2\frac{x^2+1}{\left(x^2-1\right)x^2}\right)=\lim _{x\to \:1}\left(\frac{\left(x^2+1\right)\left(x-1\right)}{x^2\left(x+1\right)}\right)=0
+\end{aligned}
+$$
+
+Hence, $\pm 1$ are the regular singular point and $0$ is irregular singular point.
+
+$8.$ \textcolor{blue}{Solve the following equations by Frobenius Method. Find the first 6 nonzero terms (if
+exist) of the solution. Also try to give the close form of the solution.}
+
+$(a)$ $$xy''\:+2y'\:+xy=0$$
+
+\textbf{Answer:}
+
+Comparing the given equation with $y''+P(x)y'+Q(x)y=0$ we have, 
+
+$$P(x)=\frac{2}{x}\qquad Q(x)=1$$
+
+Here $x=0$ is a singular point of the given differential equation. Now 
+
+$$
+\begin{aligned}
+	\lim_{x\rightarrow 0}(x-0)P(x)&=2\\
+	\lim_{x\rightarrow 0}(x-0)^2Q(x)&=0
+\end{aligned}
+$$
+
+Both of these limits are finite, hence $x=0$ is a regular singular point. Hence, the indicial equation is,
+
+$$
+\begin{aligned}
+	r(r-1)+2r&=0\\
+	r^2+r&=0\\
+	r_{1,2}=-1,0
+\end{aligned}
+$$ 
+
+$$
+\begin{aligned}
+	y'&=\sum_{k=0}^\infty a_k(k+r)x^{k+r-1}\\
+	y''&=\sum_{k=0}^\infty a_k(k+r)(k+r-1)x^{k+r-2}
+\end{aligned}
+$$
+
+Substituting these on the DE,
+
+
+$$
+x(\sum_{k=0}^\infty a_k(k+r)(k+r-1)x^{k+r-2})+2(\sum_{k=0}^\infty a_k(k+r)x^{k+r-1})+x(\sum_{k=0}^\infty a_k x^{k+r})=0$$
+$$
+(a_0r^2+a_0r)x^{r-1}+(a_1r^2+3a_1r+2a_1)x^r+\sum_{k=1}^\infty (a_{k+1}r^2+3a_{k+1}r+2a_{k+1}kr+2a_{k+1}+a_{k-1}+a_{k+1}k^2+3a_{k+1}k)x^{k+r}=0
+$$
+
+Substitute $r=-1$ and letting the coefficient equal to zero then,
+
+$$
+\begin{aligned}
+(k^2a_{k+1}+ka_{k+1}+a_{k-1})&=0\\
+a_{k+1}&=-\frac{a_{k-1}}{k(k+1)}\\
+a_k&=-\frac{a_{k-2}}{(k-1)k}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}
+a_2&=-\frac{a_0}{1.2}\\
+a_3&=-\frac{a_1}{2.3}\\
+a_4&=\frac{a_2}{3.4}=\frac{a_0}{1.2.3.4}\\
+a_5&=-\frac{a_3}{4.5}=\frac{a_1}{2.3.4.5}\\
+&\vdots\\
+a_{2k}&=\frac{(-1)^ka_0}{(2k)!}\\
+a_{2k+1}&=\frac{(-1)^ka_1}{(2k+1)!}
+\end{aligned}
+$$
+
+The solution is, $$y_1(x)=a_0x^{-1}\left( 1-\frac{x^2}{2}+\cdots+\frac{(-1)^kx^{2k}}{(2k)!+\cdots}\right)$$
+
+and, 
+
+$$y_2(x)=a_1x^{-1}\left( x-\frac{x^3}{2.3}+\cdots+\frac{(-1)^kx^{2k+1}}{(2k+1)!+\cdots}\right)$$
+
+Hence, the general solution is,
+
+$$
+y=c_1y_1+c_2y_2=c_1a_0x^{-1}\left( 1-\frac{x^2}{2}+\cdots+\frac{(-1)^kx^{2k}}{(2k)!+\cdots}\right)+c_2a_1x^{-1}\left( x-\frac{x^3}{2.3}+\cdots+\frac{(-1)^kx^{2k+1}}{(2k+1)!+\cdots}\right)
+$$
+
+$$
+y=ax^{-1}\left( 1-\frac{x^2}{2}+\cdots+\frac{(-1)^kx^{2k}}{(2k)!+\cdots}\right)+bx^{-1}\left( x-\frac{x^3}{2.3}+\cdots+\frac{(-1)^kx^{2k+1}}{(2k+1)!+\cdots}\right)
+$$
+
+First $6$ nonzero  terms are,
+
+$$y(x)=x^{-1}\left( a-\frac{ax^2}{2}+\frac{ax^4}{24}+bx-\frac{bx^3}{6}+\frac{bx^5}{120}\right)$$
+
+$(b)$ $$2x^2y''+xy'-3y=0$$
+
+\textbf{Answer:}
+
+Comparing the given equation with $y''+P(x)y'+Q(x)y=0$ we have, 
+
+$$P(x)=\frac{1}{2x}\qquad Q(x)=-\frac{3}{2x^2}$$
+
+Here $x=0$ is a singular point of the given differential equation. Now 
+
+$$
+\begin{aligned}
+\lim_{x\rightarrow 0}(x-0)P(x)&=\frac12\\
+\lim_{x\rightarrow 0}(x-0)^2Q(x)&=-\frac{3}{2}
+\end{aligned}
+$$
+
+So  $x=0$  is a regular singular point and then there exists at least one solution of the form $y=x^r\sum_{k=0}^{\infty}a_kx^k=\sum_{k=0}^{\infty}a_kx^{k+r}$, where The constant $r$ and the coefficient $a_k$'s are to be determined. Now,
+
+$$
+\begin{aligned}
+y'&=\sum_{k=0}^\infty a_k(k+r)x^{k+r-1}\\
+y''&=\sum_{k=0}^\infty a_k(k+r)(k+r-1)x^{k+r-2}
+\end{aligned}
+$$
+
+Substituting these on the DE,
+
+$$
+\begin{aligned}
+2\sum_{k=0}^\infty(k+r)(k+r-1)a_kx^{k+r}+\sum_{k=0}^\infty(k+r)x^{k+r}-3\sum_{k=0}^\infty a_kx^{k+r}&=0\\
+\sum_{k=0}^\infty (2(k+r)(k+r-1)+(k+r)-3)a_k x^{(k+r)} &=0
+\end{aligned}
+$$
+
+the coefficient of $x^r$ in the entire left hand side of the last equation is,
+
+$$2r(r-1)+r-3=0\implies r_{1,2}=\frac32,-1$$ 
+
+Since difference between two exponents is not a positive integer, two independent Frobenius series corresponding to  $r_1=\frac32$ and $r_2=-1$ exist.
+
+In order to determine the series we have the following recurrence formula,
+
+$$
+\begin{aligned}
+\sum_{k=0}^\infty (2(k+r)(k+r-1)+(k+r)-3)a_k &=0\\
+a_k=0\quad\forall k\geq 1
+\end{aligned}
+$$
+
+When $r=r_1=\frac32$ the solution is, $$y=y_1(x)=a_0x^{\frac32}$$
+
+Again, when $r=r_2=-1$ then the solution is, $$y=y_2(x)=a_0x^{-1}=\frac{a_0}{x}$$
+
+Hence, the general solution of the DE is, $$y=c_1y_1+c_2y_2=c_1a_0x^{\frac32}+c_2\frac{a_0}{x}=ax^{\frac32}+b\frac{1}{x}$$
+
+
+$(c)$ $$xy''+y'-xy=0$$
+
+\textbf{Answer:}
+
+Comparing the given equation with $y''+P(x)y'+Q(x)y=0$ we have, 
+
+$$P(x)=\frac{1}{x}\qquad Q(x)=-1$$
+
+Here $x=0$ is a singular point of the given differential equation. Now 
+$$
+\begin{aligned}
+	\lim_{x\rightarrow 0}(x-0)P(x)&=1\\
+	\lim_{x\rightarrow 0}(x-0)^2Q(x)&=0
+\end{aligned}
+$$
+
+Both of these limits are finite, hence $x=0$ is a regular singular point. Hence, the indicial equation is,
+
+$$
+\begin{aligned}
+r(r-1)+pr+q&=0\\
+r^2-r+r&=0\\
+r=0
+\end{aligned}
+$$ 
+
+$$
+\begin{aligned}
+	y'&=\sum_{k=0}^\infty a_k(k+r)x^{k+r-1}\\
+	y''&=\sum_{k=0}^\infty a_k(k+r)(k+r-1)x^{k+r-2}
+\end{aligned}
+$$
+
+Substituting these on the DE,
+
+
+$$
+\begin{aligned}
+	\sum_{k=0}^\infty(k+r)(k+r-1)a_kx^{k+r-1}+\sum_{k=0}^\infty(k+r)x^{k+r-1}-\sum_{k=0}^\infty a_kx^{k+r+1}&=0\\
+	\sum_{k=0}^\infty ((k+r)(k+r-1)+(k+r))a_k x^{(k+r-1)} +\sum_{k=2}^\infty a_{k-2}x^{(k+r-1)} &=0\\
+	r^2a_0x^{r-1}+(r+1)^2a_1x^r+\sum_{k=2}^\infty [(n+r)^2a_n-a_{n-2}]x^{n+r-1} &=0
+\end{aligned}
+$$
+
+$$r^2a_0=0\qquad (r+1)^2a_1=0\implies a_1=0$$
+
+$$
+\begin{aligned}
+(n+r)^2a_n-a_{n-2} &=0\\
+an&=\frac{a_{n-2}}{(n+r)^2}\\
+{a_{n+2}}&=\frac{a_n}{(n+2+r)^2}\\
+&=\frac{a_n}{(n+2)^2}\quad\text{ Using }r=0
+\end{aligned}
+$$
+
+$a_3=a_5=\cdots=a_{2n+1}=0$ because $a_1=0$. Now,
+
+$$
+\begin{aligned}
+a_2&=\frac{a_0}{2^2}\\
+a_4&=\frac{a_2}{4^2}=\frac{a_0}{4^22^2}=\frac{a_0}{2^{2.2}(2.1)^2}\\
+a_6&=\frac{a_4}{6^2}=\frac{a_0}{6^24^22^2}=\frac{a_0}{2^{2.3}(3.2.1)^2}\\
+&\vdots\\
+a_{2n}&=\frac{a_0}{2^{2n}(n!)^2}
+\end{aligned}
+$$
+
+Hence one solution $y_1(x)$ is,
+
+$$
+y_1(x)=a_0\left(1+\frac{x^2}{4}+\frac{x^4}{64}+\ldots \:+\frac{x^{2n}}{2^{2n}(n!)^2}+\ldots \:\right)
+$$
+
+For \href{https://en.wikipedia.org/wiki/Frobenius_method#Roots_separated_by_an_integer}{repeated root} find the second solution in the form: $$y_2=y_1\ln \left(x\right)+\sum _{k=1}^{\infty \:}b_kx^{k+r}=y_1\ln \left(x\right)+\sum _{k=1}^{\infty \:}b_kx^{k}\qquad \text{r}=0$$
+
+Then, 
+
+$$
+\begin{aligned}
+	y_2'&=y_1'\ln(x)+y_1x^{-1}+\sum_{k=1}^\infty kb_kx^{k-1}\\
+	y_2''&=y_1''\ln(x)+2y_1'x^{-1}-y_1x^{-2}+\sum_{k=2}^\infty k(k-1)b_kx^{k-2}
+\end{aligned}
+$$
+
+Plug into $xy''+y'-xy=0$,
+
+
+$$
+\begin{aligned}
+x(y_1''\ln(x)+2y_1'x^{-1}-y_1x^{-2}+\sum_{k=2}^\infty k(k-1)b_kx^{k-2})+(y_1'\ln(x)+y_1x^{-1}+\sum_{k=1}^\infty kb_kx^{k-1})-x(y_1\ln \left(x\right)+\sum _{k=1}^{\infty \:}b_kx^{k})&=0\\
+\ln(x)(xy_1''+y_1'-xy)+2y_1'+\sum_{k=2}^\infty xb_kk(k-1)x^{k-2}-\sum_{k=1}^\infty xb_kx^k+\sum_{k=1}^\infty b_kkx^{k-1}&=0\\
+\text{Since }xy_1''+y_1'-xy=0\implies
+2y_1'+\sum_{k=2}^\infty xb_kk(k-1)x^{k-2}-\sum_{k=1}^\infty xb_kx^k+\sum_{k=1}^\infty b_kkx^{k-1}&=0\\
+\text{Since } y_1\sum_{k=0}^\infty a_kx^{k},\:y_1'=\sum_{k=0}^\infty a_kkx^{k-1}\implies
+2\sum_{k=0}^\infty a_kkx^{}k-1+\sum_{k=2}^\infty xb_kk(k-1)x^{k-2}-\sum_{k=1}^\infty xb_kx^k+\sum_{k=1}^\infty b_kkx^{k-1}&=0\\
+2a_1+b_1+(4a_2+4b_2)x\sum_{k=2}^\infty \left( b_{k+1}k^2+2b_{k+1}k+b_{k+1}+2a_{k+1}-b_{k-1}+2a_{k+1}k \right)x^k&=0
+\end{aligned}
+$$
+
+$$
+2a_1+b_1=0\implies b_1=-2a_1,\quad 4a_2+4b_2=0\implies b_2=-a_2
+$$
+
+$$
+\begin{aligned}
+b_{k+1}k^2+2b_{k+1}k+b_{k+1}+2a_{k+1}-b_{k-1}+2a_{k+1}k&=0\\
+b_{k+1}&=\frac{-2a_{k+1}-2a_{k+1}k+b_{k-1}}{(k+1)^2}\\
+b_k&=\frac{-2a_kk+b_{k-2}}{k^2}
+\end{aligned}
+$$
+
+$$b_2=-a_2=-\frac{a_0}{4}$$
+
+$$b_4=\frac{-8a_4+b_2}{16}=-\frac{3a_0}{128}$$
+
+$$\vdots$$
+
+Hence the general solution is,
+
+\begin{multline*}
+y=c_1a_0\left(1+\frac{x^2}{4}+\frac{x^4}{64}+\ldots \:+\frac{x^{2n}}{64\ldots \:4n^2}+\ldots \:\right)+\\
+c_2a_0\left(\ln \left(x\right)\left(1+\frac{x^2}{4}+\frac{x^4}{64}+\ldots \:+\frac{x^{2n}}{64\ldots \:4n^2}+\ldots \:\right)-\frac{x^2}{4}-\frac{3x^4}{128}-\frac{11x^6}{13824}+\ldots \:\right)
+\end{multline*}
+
+\begin{multline*}
+	y=a\left(1+\frac{x^2}{4}+\frac{x^4}{64}+\ldots \:+\frac{x^{2n}}{64\ldots \:4n^2}+\ldots \:\right)+\\
+	b\left(\ln \left(x\right)\left(1+\frac{x^2}{4}+\frac{x^4}{64}+\ldots \:+\frac{x^{2n}}{64\ldots \:4n^2}+\ldots \:\right)-\frac{x^2}{4}-\frac{3x^4}{128}-\frac{11x^6}{13824}+\ldots \:\right)
+\end{multline*}
+
+
+%	\bigskip
+	
+	%----------------------------------------------------------------------------------------
+	%	REFERENCE LIST
+	%----------------------------------------------------------------------------------------
+	
+%	\printbibliography
+	
+	%----------------------------------------------------------------------------------------
+	
+\end{document}
